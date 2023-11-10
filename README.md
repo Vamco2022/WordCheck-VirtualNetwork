@@ -9,4 +9,5 @@ WordCheck - 文字预测算法
 
 我现在只是用来冲个数，其实Bug太多，根本运行不了！
 
-last change: 2023/11/10 9:08 p.m. (UTC-8)
+last change: 2023/11/10 9:08 p.m. (UTC+8)
+
