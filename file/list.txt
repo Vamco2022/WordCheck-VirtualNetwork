@@ -1,0 +1,16 @@
+#Word data list
+#Use to save the word path and type
+#Like be this : [T] [P] {L}
+#Like be this : W .\list\i.txt
+#The [T] tag has these:
+# W Word
+#T Text
+#
+T D:\IdeaWorks\Word-1\src\file\list\cy.txt {cn}
+T D:\IdeaWorks\Word-1\src\file\list\dxj.txt {cn}
+T D:\IdeaWorks\Word-1\src\file\list\hzg.txt {cn}
+T D:\IdeaWorks\Word-1\src\file\list\lyswzs.txt {cn}
+T D:\IdeaWorks\Word-1\src\file\list\kgdd.txt {cn}
+T D:\IdeaWorks\Word-1\src\file\list\dg.txt {cn}
+T D:\IdeaWorks\Word-1\src\file\list\wdzyqsy.txt {cn}
+T D:\IdeaWorks\Word-1\src\file\list\zjr.txt {cn}
