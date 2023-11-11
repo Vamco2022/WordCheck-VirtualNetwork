@@ -21,6 +21,12 @@ public class init {
     //T
     static Scanner get = new Scanner(System.in);
 
+    static int langId = 0;
+    //0 = cn
+    //1 = jp
+    //2 = ru
+    //3 = en
+
     public static void main(String[] args) {
         int fileInts = 0;
         long kbs = 0;
@@ -71,6 +77,14 @@ public class init {
                     getWord = get.nextLine();
                     if (getWord.equals("$sudo admin-mode on")){
                         systemMode = true;
+                    }else if (getWord.startsWith("$sudo test-lang")){
+                        String[] sp = getWord.split(" ");
+                        //if (sp[2])
+                    }else if (getWord.equals("$sudo exit")){
+                        run = false;
+                    }else if (getWord.equals("$sudo clear")){
+                        sb = new StringBuilder();
+                        System.out.println("System: The program is reset");
                     }
                     if (getWord.getBytes().length == 3 || getWord.getBytes().length == 1) {
                         long start = System.currentTimeMillis();
