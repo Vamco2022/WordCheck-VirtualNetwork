@@ -3,11 +3,8 @@ package com.vamco.java.words;
 import com.vamco.java.jar.tools.fileReader;
 import com.vamco.java.words.lib.AI;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 public class init {
@@ -18,7 +15,13 @@ public class init {
     //the word data
 
     static ArrayList<String> textList = new ArrayList<>();
-    //T
+    //Text-cn
+
+    static ArrayList<String> textListJp = new ArrayList<>();
+    //Text-jp
+
+    static ArrayList<String> textListRu = new ArrayList<>();
+    static ArrayList<String> textListEn = new ArrayList<>();
     static Scanner get = new Scanner(System.in);
 
     static int langId = 0;
@@ -34,14 +37,15 @@ public class init {
         //first, Read list.txt to get all data path
         try {
             //read list.txt
-            fileReader listGet = new fileReader("D:\\IdeaWorks\\Word-1\\src\\file\\list.txt");
+            fileReader listGet = new fileReader(".\\file\\list.txt");
             String r;
             while (!((r = listGet.readLine()) == null)){
                 if (!r.startsWith("#")) {
                     String[] p = r.split(" ");
                     fileList.add(new String[]{
-                            p[1],
-                            p[0]
+                            ".\\file\\" + p[1],
+                            p[0],
+                            p[2]
                     });
                 }
             }
@@ -58,7 +62,24 @@ public class init {
                 }else if (strings[1].equals("T")){
                     words = new fileReader(strings[0]);
                     String l = words.readLine();
-                    textList.add(l);
+                    String type = strings[2];
+                    switch (type){
+                        case "{cn}":
+                            textList.add(l);
+                            break;
+
+                        case "{jp}":
+                            textListJp.add(l);
+                            break;
+
+                        case "{ru}":
+                            textListRu.add(l);
+                            break;
+
+                        case "{en}":
+                            textListEn.add(l);
+                            break;
+                    }
                     fileInts++;
                     kbs += l.getBytes().length;
                 }
@@ -71,29 +92,71 @@ public class init {
             String getWord;
             StringBuilder sb = new StringBuilder();
             boolean systemMode = false;
+            String[] langTag = {"cn","jp","ru","en"};
             while(run){
                 if (!systemMode) {
-                    System.out.print(">");
+                    System.out.print(langTag[langId] + ">");
                     getWord = get.nextLine();
                     if (getWord.equals("$sudo admin-mode on")){
                         systemMode = true;
-                    }else if (getWord.startsWith("$sudo test-lang")){
+                        continue;
+                    }else if (getWord.startsWith("$sudo lang-set")){
                         String[] sp = getWord.split(" ");
-                        //if (sp[2])
+                        switch (sp[2]){
+                            case "cn":
+                                sb = new StringBuilder();
+                                langId = 0;
+                                break;
+
+                            case "jp":
+                                sb = new StringBuilder();
+                                langId = 1;
+                                break;
+
+                            case "ru":
+                                sb = new StringBuilder();
+                                langId = 2;
+                                break;
+
+                            case "en":
+                                sb = new StringBuilder();
+                                langId = 3;
+                                break;
+                        }
+                        continue;
                     }else if (getWord.equals("$sudo exit")){
                         run = false;
+                        continue;
                     }else if (getWord.equals("$sudo clear")){
                         sb = new StringBuilder();
                         System.out.println("System: The program is reset");
+                        continue;
                     }
-                    if (getWord.getBytes().length == 3 || getWord.getBytes().length == 1) {
-                        long start = System.currentTimeMillis();
-                        new AI(wordList, textList, sb, getWord);
-                        long end = System.currentTimeMillis();
-                        double use = (double) (end - start) / 1000;
-                        System.out.println("分析完成，耗时" + use + "s");
-                        sb.append(getWord);
+                    if (langId == 0) {
+                        if (getWord.length() != 1) {
+                            if (getWord.getBytes().length / 3 != 1) {
+                                char[] l = getWord.toCharArray();
+                                for (int i = 0; i < l.length - 1; i++) {
+                                    sb.append(l[i]);
+                                }
+                                getWord = String.valueOf(l[l.length - 1]);
+                            }
+                        }
                     }
+                    long start = System.currentTimeMillis();
+                    switch (langId) {
+                        case 0:
+                            new AI(wordList, textList, sb, getWord, langId);
+                            break;
+
+                        case 1:
+                            new AI(wordList, textListJp, sb, getWord, langId);
+                            break;
+                    }
+                    long end = System.currentTimeMillis();
+                    double use = (double) (end - start) / 1000;
+                    System.out.println("分析完成，耗时" + use + "s");
+                    sb.append(getWord);
                 }else{
                     System.out.print("admin$>");
                     getWord = get.nextLine();
@@ -140,8 +203,6 @@ public class init {
                     }
                 }
             }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

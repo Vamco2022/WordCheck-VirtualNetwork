@@ -1,18 +1,28 @@
 #Word data list
 #Use to save the word path and type
 #Like be this : [T] [P] {L}
-#Like be this : W .\list\i.txt
+#Like be this : W \list\i.txt
 #The [T] tag has these:
 # W Word
 #T Text
 #
-T D:\IdeaWorks\Word-1\src\file\list\cy.txt {cn}
-T D:\IdeaWorks\Word-1\src\file\list\dxj.txt {cn}
-T D:\IdeaWorks\Word-1\src\file\list\hzg.txt {cn}
-T D:\IdeaWorks\Word-1\src\file\list\lyswzs.txt {cn}
-T D:\IdeaWorks\Word-1\src\file\list\kgdd.txt {cn}
-T D:\IdeaWorks\Word-1\src\file\list\dg.txt {cn}
-T D:\IdeaWorks\Word-1\src\file\list\wdzyqsy.txt {cn}
-T D:\IdeaWorks\Word-1\src\file\list\zjr.txt {cn}
-T D:\IdeaWorks\Word-1\src\file\list\yzsmzm.txt {cn}
-T D:\IdeaWorks\Word-1\src\file\list\q.txt {cn}
+#cn Data
+T \list\cn\cy.txt {cn}
+T \list\cn\dxj.txt {cn}
+T \list\cn\hzg.txt {cn}
+T \list\cn\lyswzs.txt {cn}
+T \list\cn\kgdd.txt {cn}
+T \list\cn\dg.txt {cn}
+T \list\cn\wdzyqsy.txt {cn}
+T \list\cn\zjr.txt {cn}
+T \list\cn\yzsmzm.txt {cn}
+T \list\cn\q.txt {cn}
+T \list\cn\qr.txt {cn}
+T \list\cn\jsdyg.txt {cn}
+T \list\cn\lr.txt {cn}
+T \list\cn\gc.txt {cn}
+#cn Memes
+T \list\cn\jntm.txt {cn}
+#
+#jp Data
+T \list\jp\dzh.txt {jp}
