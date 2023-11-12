@@ -1,4 +1,4 @@
-# WordCheck - 文字预测算法
+# WordCheck(Virtual NetWork) - 文字预测算法
 WordCheck - 文字预测算法
 
 一种基于Java的伪神经网络的文字预测算法，他会根据你的输入来预测下一个字符的可能性。
@@ -9,11 +9,13 @@ WordCheck - 文字预测算法
 
 . 基于上下文
 
-现在的计划是
-
 . 多语言文本预测
 
 . 可移植性
 
-last change: 2023/11/11 8：28 p.m. (UTC+8)
+现在的计划是
+
+.语料库更新
+
+last change: 2023/11/12 5：09 p.m. (UTC+8)
 
