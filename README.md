@@ -17,5 +17,6 @@ WordCheck - 文字预测算法
 
 .语料库更新
 
-last change: 2023/11/12 5：14 p.m. (UTC+8)
+last change: 2024/04/22 8:05 p.m. (UTC+8)
 
+(PS:其实就是统计概率而已）
